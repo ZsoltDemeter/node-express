@@ -29,6 +29,10 @@ app.use((req, res, next) => {
 
 // routes
 
+app.get('/.well-known/pki-validation/3A2876D0B3770EB173C15C0F9D0A25FD.txt', (req, res) => {
+    res.sendFile('/home/ubuntu/node-express/3A2876D0B3770EB173C15C0F9D0A25FD.txt')
+})
+
 app.get('/reports', (req, res) => {
     let energyReports = []
 
