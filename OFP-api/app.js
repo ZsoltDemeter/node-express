@@ -20,21 +20,12 @@ connectToDb((err) => {
     }
 })
 
-// connectToDb((err) => {
-//     if(!err){
-//         app.listen(443, () =>{
-//             console.log('app listening on port 443')
-//         })
-//         db = getDb()
-//     }
-// })
-
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://ofp-admin-panel.netlify.app');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-    next();
-});
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', 'https://ofp-admin-panel.netlify.app');
+//     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+//     next();
+// });
 
 // routes
 app.get('/.well-known/pki-validation/23BD35087EFF77D116FFF1B3494CC1C5.txt', (req, res) => {
