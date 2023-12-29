@@ -3,6 +3,8 @@ const cors = require('cors')
 const fs = require('fs')
 const { connectToDb, getDb } = require('./db')
 
+const file = fs.readFileSync('./3A2876D0B3770EB173C15C0F9D0A25FD.txt')
+
 //init app & middleware
 const app = express()
 
