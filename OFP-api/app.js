@@ -7,16 +7,24 @@ const app = express()
 //db connection
 let db
 
+// connectToDb((err) => {
+//     if(!err){
+//         app.listen(3000, () =>{
+//             console.log('app listening on port 3000')
+//         })
+//         db = getDb()
+//     }
+// })
+
 connectToDb((err) => {
     if(!err){
-        app.listen(3000, () =>{
-            console.log('app listening on port 3000')
+        app.listen(443, () =>{
+            console.log('app listening on port 443')
         })
         db = getDb()
     }
 })
 
-// CORS middleware to allow requests from a specific origin
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'https://ofp-admin-panel.netlify.app');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
