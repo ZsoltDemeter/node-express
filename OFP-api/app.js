@@ -7,23 +7,23 @@ const app = express()
 //db connection
 let db
 
-// connectToDb((err) => {
-//     if(!err){
-//         app.listen(3000, () =>{
-//             console.log('app listening on port 3000')
-//         })
-//         db = getDb()
-//     }
-// })
-
 connectToDb((err) => {
     if(!err){
-        app.listen(443, () =>{
-            console.log('app listening on port 443')
+        app.listen(3000, () =>{
+            console.log('app listening on port 3000')
         })
         db = getDb()
     }
 })
+
+// connectToDb((err) => {
+//     if(!err){
+//         app.listen(443, () =>{
+//             console.log('app listening on port 443')
+//         })
+//         db = getDb()
+//     }
+// })
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'https://ofp-admin-panel.netlify.app');
