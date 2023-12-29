@@ -1,8 +1,12 @@
 const express = require('express')
+const cors = require('cors')
+// const fs = require('fs')
 const { connectToDb, getDb } = require('./db')
 
 //init app & middleware
 const app = express()
+
+app.use(cors())
 
 //db connection
 let db
@@ -33,6 +37,10 @@ app.use((req, res, next) => {
 });
 
 // routes
+app.get('/.well-known/pki-validation/23BD35087EFF77D116FFF1B3494CC1C5.txt', (req, res) => {
+    res.sendFile('/23BD35087EFF77D116FFF1B3494CC1C5.txt')
+})
+
 app.get('/reports', (req, res) => {
     let energyReports = []
 
