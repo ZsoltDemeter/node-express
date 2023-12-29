@@ -1,14 +1,21 @@
 const express = require('express')
 const cors = require('cors')
 const fs = require('fs')
+const https = require('https')
 const { connectToDb, getDb } = require('./db')
 
-const file = fs.readFileSync('./3A2876D0B3770EB173C15C0F9D0A25FD.txt')
+const key = fs.readFileSync('private.key')
+const cert = fs.readFileSync('certificate.crt')
 
 //init app & middleware
 const app = express()
 
 app.use(cors())
+
+const cred = {
+    key,
+    cert
+}
 
 //db connection
 let db
@@ -30,10 +37,6 @@ app.use((req, res, next) => {
 });
 
 // routes
-
-app.get('/.well-known/pki-validation/3A2876D0B3770EB173C15C0F9D0A25FD.txt', (req, res) => {
-    res.sendFile('/home/ubuntu/node-express/3A2876D0B3770EB173C15C0F9D0A25FD.txt')
-})
 
 app.get('/reports', (req, res) => {
     let energyReports = []
@@ -76,3 +79,6 @@ app.get('/consumption-forecast', (req, res) => {
         res.status(500).json({error: 'Could not fetch the documents'})
        })
 })
+
+const httpsServer = https.createServer(cred,app)
+httpsServer.listen(8443)
