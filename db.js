@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb')
 
 let dbConnection
-let uri = 'mongodb+srv://zsoltdb:ofp1234@ofp-cluster.b7fnxnx.mongodb.net/OFP-DB?retryWrites=true&w=majority'
+let uri = '***'
 
 module.exports = {
     connectToDb: (cb) => {
