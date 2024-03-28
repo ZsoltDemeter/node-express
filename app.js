@@ -7,6 +7,8 @@ const { connectToDb, getDb } = require('./db')
 const key = fs.readFileSync('private.key')
 const cert = fs.readFileSync('certificate.crt')
 
+const file = fs.readFileSync('./4504A4A86BC2F2BCE64F2CD788A331F7.txt')
+
 //init app & middleware
 const app = express()
 
@@ -36,8 +38,13 @@ app.use((req, res, next) => {
     next();
 });
 
-// routes
+//https test route
 
+app.get('/.well-known/pki-validation/4504A4A86BC2F2BCE64F2CD788A331F7.txt', (reg, res) => {
+    res.sendFile('/home/ubuntu/node-express/4504A4A86BC2F2BCE64F2CD788A331F7.txt');
+})
+
+// routes
 app.get('/reports', (req, res) => {
     let energyReports = []
 
