@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb')
 
 let dbConnection
-let uri = '****'
+let uri = '***'
 
 module.exports = {
     connectToDb: (cb) => {
